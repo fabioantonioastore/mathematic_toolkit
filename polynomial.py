@@ -39,8 +39,8 @@ def polynomial_solver(terms: list[int | float]) -> list[int | float]:
             factors.append(factor)
             terms = result[:-1:]
     if len(terms) == 3:
-        quadradict_result = quadratic_solver(terms[0], terms[1], terms[2])
-        for solution in quadradict_result:
+        quadratic_result = quadratic_solver(terms[0], terms[1], terms[2])
+        for solution in quadratic_result:
             factors.append(solution)
     return factors
 
