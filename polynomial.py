@@ -38,6 +38,12 @@ def polynomial_solver(terms: list[int | float]) -> list[int | float]:
         if result[-1] == 0:
             factors.append(factor)
             terms = result[:-1:]
+    if len(terms) > 3:
+        for factor in factors:
+            result = synthetic_division(factor, terms)
+            if result[-1] == 0:
+                factors.append(factor)
+                terms = result[:-1:]
     if len(terms) == 3:
         quadratic_result = quadratic_solver(terms[0], terms[1], terms[2])
         for solution in quadratic_result:
