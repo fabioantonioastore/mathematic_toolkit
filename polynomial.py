@@ -48,7 +48,10 @@ def polynomial_solver(terms: list[int | float]) -> list[int | float]:
         quadratic_result = quadratic_solver(terms[0], terms[1], terms[2])
         for solution in quadratic_result:
             factors.append(solution)
-    return factors
+    try:
+        return sorted(factors)
+    except:
+        return factors
 
 
 def synthetic_division(c: int | float, terms: list[int | float]) -> list[int | float]:
