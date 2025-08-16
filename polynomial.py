@@ -8,19 +8,19 @@ def get_factors(n: int) -> list[int]:
     return factors
 
 
-def quadratic_solver(a: int | float, b: int | float, c: int | float) -> set[int | float]:
-    sqrt = ((b ** 2) - (4 * a * c)) ** (1 / 2)
+def quadratic_solver(
+    a: int | float, b: int | float, c: int | float
+) -> set[int | float]:
+    sqrt = ((b**2) - (4 * a * c)) ** (1 / 2)
     result = set()
-    result.add(
-        ((-b) - sqrt) / (2 * a)
-    )
-    result.add(
-        ((-b) + sqrt) / (2 * a)
-    )
+    result.add(((-b) - sqrt) / (2 * a))
+    result.add(((-b) + sqrt) / (2 * a))
     return result
 
 
-def polynomial_possibly_factors(first: int | float, last: int | float) -> set[int | float]:
+def polynomial_possibly_factors(
+    first: int | float, last: int | float
+) -> set[int | float]:
     possibly_factors = set()
     first_factors = get_factors(first)
     last_factors = get_factors(last)
