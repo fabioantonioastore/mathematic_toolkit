@@ -47,16 +47,22 @@ def quadratic_solver(
 def polynomial_solver(coefficients: list[int | float]) -> set[int | float]:
     solutions = set()
     possible_factors = polynomial_possible_factors(coefficients[0], coefficients[-1])
-    while True:
-        change = False
-        for factor in possible_factors:
-            result = synthetic_division(factor, coefficients)
-            if result[-1] == 0:
-                solutions.add(factor)
-                coefficients = result[:-1:]
-                change = True
-        if not change:
-            break
+    for factor in possible_factors:
+        result = synthetic_division(factor, coefficients)
+        if result[-1] == 0:
+            solutions.add(factor)
+            coefficients = result[:-1:]
+    if len(coefficients) > 3:
+        while True:
+            change = False
+            for factor in possible_factors:
+                result = synthetic_division(factor, coefficients)
+                if result[-1] == 0:
+                    solutions.add(factor)
+                    coefficients = result[:-1:]
+                    change = True
+            if not change:
+                break
     if len(coefficients) == 3:
         quadratic_result = quadratic_solver(
             coefficients[0], coefficients[1], coefficients[2]
